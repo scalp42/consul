@@ -91,12 +91,12 @@ func (s *HTTPServer) KVSGet(resp http.ResponseWriter, req *http.Request, args *s
 
 // KVSGetKeys handles a GET request for keys
 func (s *HTTPServer) KVSGetKeys(resp http.ResponseWriter, req *http.Request, args *structs.KeyRequest) (interface{}, error) {
-	// Check for a seperator, due to historic spelling error,
+	// Check for a separator, due to historic spelling error,
 	// we now are forced to check for both spellings
 	var sep string
 	params := req.URL.Query()
-	if _, ok := params["seperator"]; ok {
-		sep = params.Get("seperator")
+	if _, ok := params["separator"]; ok {
+		sep = params.Get("separator")
 	}
 	if _, ok := params["separator"]; ok {
 		sep = params.Get("separator")
@@ -106,7 +106,7 @@ func (s *HTTPServer) KVSGetKeys(resp http.ResponseWriter, req *http.Request, arg
 	listArgs := structs.KeyListRequest{
 		Datacenter:   args.Datacenter,
 		Prefix:       args.Key,
-		Seperator:    sep,
+		Separator:    sep,
 		QueryOptions: args.QueryOptions,
 	}
 
